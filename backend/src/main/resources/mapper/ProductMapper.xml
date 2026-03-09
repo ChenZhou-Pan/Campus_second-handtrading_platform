@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.Product">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="description" property="description"/>
+        <result column="price" property="price"/>
+        <result column="original_price" property="originalPrice"/>
+        <result column="condition" property="condition"/>
+        <result column="category" property="category"/>
+        <result column="images" property="images"/>
+        <result column="seller_id" property="sellerId"/>
+        <result column="status" property="status"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="favorite_count" property="favoriteCount"/>
+        <result column="location" property="location"/>
+        <result column="campus" property="campus"/>
+        <result column="tags" property="tags"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT * FROM products WHERE id = #{id} AND status != 'deleted'
+    </select>
+
+    <select id="findByIdForOrder" resultMap="BaseResultMap">
+        SELECT * FROM products WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap" parameterType="map">
+        SELECT * FROM products
+        WHERE status = 'published'
+        <if test="category != null and category != ''">
+            AND category = #{category}
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND (title LIKE CONCAT('%', #{keyword}, '%') OR description LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="condition != null and condition != ''">
+            AND `condition` = #{condition}
+        </if>
+        <if test="minPrice != null">
+            AND price >= #{minPrice}
+        </if>
+        <if test="maxPrice != null">
+            AND price &lt;= #{maxPrice}
+        </if>
+        <if test="location != null and location != ''">
+            AND location LIKE CONCAT('%', #{location}, '%')
+        </if>
+        <choose>
+            <when test="sortBy == 'price_asc'">ORDER BY price ASC</when>
+            <when test="sortBy == 'price_desc'">ORDER BY price DESC</when>
+            <when test="sortBy == 'viewCount'">ORDER BY view_count DESC</when>
+            <otherwise>ORDER BY created_at DESC</otherwise>
+        </choose>
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM products
+        WHERE status = 'published'
+        <if test="category != null and category != ''">
+            AND category = #{category}
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND (title LIKE CONCAT('%', #{keyword}, '%') OR description LIKE CONCAT('%', #{keyword}, '%'))
+        </if>
+        <if test="condition != null and condition != ''">
+            AND `condition` = #{condition}
+        </if>
+        <if test="minPrice != null">
+            AND price >= #{minPrice}
+        </if>
+        <if test="maxPrice != null">
+            AND price &lt;= #{maxPrice}
+        </if>
+        <if test="location != null and location != ''">
+            AND location LIKE CONCAT('%', #{location}, '%')
+        </if>
+    </select>
+
+    <select id="findBySellerId" resultMap="BaseResultMap">
+        SELECT * FROM products
+        WHERE seller_id = #{sellerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+        ORDER BY created_at DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countBySellerId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM products
+        WHERE seller_id = #{sellerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+    </select>
+
+    <select id="findAllForAdmin" resultMap="BaseResultMap">
+        SELECT * FROM products
+        WHERE status != 'deleted'
+        ORDER BY created_at DESC
+    </select>
+
+    <insert id="insert">
+        INSERT INTO products (id, title, description, price, original_price, `condition`, category, images, seller_id, status, view_count, favorite_count, location, campus, tags, created_at, updated_at)
+        VALUES (#{id}, #{title}, #{description}, #{price}, #{originalPrice}, #{condition}, #{category}, #{images}, #{sellerId}, #{status}, #{viewCount}, #{favoriteCount}, #{location}, #{campus}, #{tags}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <update id="update">
+        UPDATE products
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="originalPrice != null">original_price = #{originalPrice},</if>
+            <if test="condition != null">`condition` = #{condition},</if>
+            <if test="category != null">category = #{category},</if>
+            <if test="images != null">images = #{images},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="location != null">location = #{location},</if>
+            <if test="campus != null">campus = #{campus},</if>
+            <if test="tags != null">tags = #{tags},</if>
+            updated_at = #{updatedAt}
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="incrementViewCount">
+        UPDATE products SET view_count = view_count + 1 WHERE id = #{id}
+    </update>
+
+    <update id="updateFavoriteCount">
+        UPDATE products SET favorite_count = #{count} WHERE id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.ConversationMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.Conversation">
+        <id column="id" property="id"/>
+        <result column="participant_ids" property="participantIds"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT * FROM conversations WHERE id = #{id}
+    </select>
+
+    <select id="findByParticipants" resultMap="BaseResultMap">
+        SELECT * FROM conversations WHERE participant_ids = #{participantIds} LIMIT 1
+    </select>
+
+    <select id="findByUserId" resultMap="BaseResultMap">
+        SELECT * FROM conversations WHERE participant_ids LIKE CONCAT('%', #{userId}, '%') ORDER BY updated_at DESC LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countByUserId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM conversations WHERE participant_ids LIKE CONCAT('%', #{userId}, '%')
+    </select>
+
+    <insert id="insert">
+        INSERT INTO conversations (id, participant_ids, updated_at)
+        VALUES (#{id}, #{participantIds}, NOW())
+    </insert>
+
+    <update id="update">
+        UPDATE conversations SET updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM conversations WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,115 @@
+.category-sidebar {
+  width: 200px;
+  height: calc(100vh - 64px);
+  background: white;
+  border-right: 1px solid #e8e8e8;
+  overflow-x: visible; /* 水平方向允许溢出 */
+  overflow-y: auto; /* 垂直方向允许滚动 */
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 100;
+}
+
+.category-sidebar-list {
+  padding: 8px 0;
+  overflow: visible; /* 允许子元素溢出显示 */
+}
+
+.category-sidebar-item {
+  position: relative;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+  overflow: visible; /* 允许弹出框显示 */
+}
+
+.category-sidebar-item:hover {
+  background: rgba(227, 242, 253, 0.6);
+  border-left-color: rgba(187, 222, 251, 0.8);
+}
+
+.category-sidebar-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-sidebar-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+  color: #666;
+}
+
+.category-sidebar-item:hover .category-sidebar-icon {
+  color: #1a1a1a;
+}
+
+.category-icon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1890ff;
+  display: inline-block;
+}
+
+.category-sidebar-label {
+  font-size: 14px;
+  color: #333;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 悬浮弹出框 */
+.category-sidebar-popup {
+  position: fixed; /* 使用fixed定位，不受父容器overflow影响 */
+  background: white;
+  border: 1px solid #e8e8e8;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1001; /* 提高z-index，确保显示在最上层 */
+  min-width: 200px;
+  max-width: 400px;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  display: block !important; /* 强制显示 */
+}
+
+.category-popup-content {
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.category-popup-item {
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.category-popup-item:hover {
+  background: rgba(227, 242, 253, 0.6);
+  color: #1a1a1a;
+}
+
+.category-popup-item:nth-child(odd) {
+  border-right: 1px solid #f5f5f5;
+}
+
+/* 移动端隐藏 */
+@media (max-width: 768px) {
+  .category-sidebar {
+    display: none;
+  }
+}

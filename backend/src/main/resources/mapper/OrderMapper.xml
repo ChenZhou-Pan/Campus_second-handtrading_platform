@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.OrderMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.Order">
+        <id column="id" property="id"/>
+        <result column="product_id" property="productId"/>
+        <result column="buyer_id" property="buyerId"/>
+        <result column="seller_id" property="sellerId"/>
+        <result column="price" property="price"/>
+        <result column="status" property="status"/>
+        <result column="shipping_address" property="shippingAddress"/>
+        <result column="contact_phone" property="contactPhone"/>
+        <result column="note" property="note"/>
+        <result column="trade_no" property="tradeNo"/>
+        <result column="seller_alipay_account" property="sellerAlipayAccount"/>
+        <result column="transfer_status" property="transferStatus"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT * FROM orders WHERE id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM orders ORDER BY created_at DESC
+    </select>
+
+    <select id="findByBuyerId" resultMap="BaseResultMap">
+        SELECT * FROM orders
+        WHERE buyer_id = #{buyerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+        ORDER BY created_at DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="findBySellerId" resultMap="BaseResultMap">
+        SELECT * FROM orders
+        WHERE seller_id = #{sellerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+        ORDER BY created_at DESC
+        LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countByBuyerId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM orders
+        WHERE buyer_id = #{buyerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+    </select>
+
+    <select id="countBySellerId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM orders
+        WHERE seller_id = #{sellerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+    </select>
+
+    <select id="sumPriceByBuyerId" resultType="java.math.BigDecimal">
+        SELECT COALESCE(SUM(price), 0) FROM orders
+        WHERE buyer_id = #{buyerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+    </select>
+
+    <select id="sumPriceBySellerId" resultType="java.math.BigDecimal">
+        SELECT COALESCE(SUM(price), 0) FROM orders
+        WHERE seller_id = #{sellerId}
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+    </select>
+
+    <insert id="insert">
+        INSERT INTO orders (id, product_id, buyer_id, seller_id, price, status, shipping_address, contact_phone, note, trade_no, seller_alipay_account, transfer_status, created_at, updated_at)
+        VALUES (#{id}, #{productId}, #{buyerId}, #{sellerId}, #{price}, #{status}, #{shippingAddress}, #{contactPhone}, #{note}, #{tradeNo}, #{sellerAlipayAccount}, #{transferStatus}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <update id="updateStatus">
+        UPDATE orders SET status = #{status}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <update id="cancel">
+        UPDATE orders SET status = 'cancelled', updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <update id="updateTradeNo">
+        UPDATE orders SET trade_no = #{tradeNo}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <update id="updateTransferStatus">
+        UPDATE orders SET transfer_status = #{transferStatus}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <select id="findExpiredPendingOrders" resultMap="BaseResultMap">
+        SELECT * FROM orders
+        WHERE status = 'pending'
+        AND created_at &lt;= #{beforeTime}
+    </select>
+
+    <update id="updateUpdatedAt">
+        UPDATE orders SET updated_at = #{updatedAt} WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM orders WHERE id = #{id}
+    </delete>
+
+    <select id="findByProductId" resultMap="BaseResultMap">
+        SELECT * FROM orders WHERE product_id = #{productId}
+    </select>
+</mapper>

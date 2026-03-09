@@ -1,0 +1,121 @@
+/* 胶囊状按钮样式 */
+.capsule-button {
+  border-radius: 24px !important;
+}
+
+.capsule-button.ant-btn-large {
+  height: 44px !important;
+  border-radius: 24px !important;
+}
+
+.capsule-button.ant-btn {
+  border-radius: 24px !important;
+}
+
+/* 胶囊状输入框样式 */
+.ant-input-affix-wrapper,
+.ant-input {
+  border-radius: 24px !important;
+}
+
+.ant-input-password {
+  border-radius: 24px !important;
+}
+
+.ant-input-password .ant-input {
+  border-radius: 24px !important;
+}
+
+/* 验证码输入容器样式 */
+.verification-code-container {
+  border-radius: 24px !important;
+}
+
+.verification-code-container .ant-input {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.verification-code-container .ant-input:focus,
+.verification-code-container .ant-input-focused {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.verification-code-button {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.verification-code-button:hover {
+  background: transparent !important;
+  color: #4a5568 !important;
+}
+
+/* 所有输入框容器样式 */
+.input-container {
+  border-radius: 24px !important;
+}
+
+.input-container .ant-input,
+.input-container .ant-input-affix-wrapper {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.input-container .ant-input:focus,
+.input-container .ant-input-focused,
+.input-container .ant-input-affix-wrapper:focus,
+.input-container .ant-input-affix-wrapper-focused {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.input-container .ant-input-password,
+.input-container .ant-input-password .ant-input {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.input-container .ant-input-password:focus,
+.input-container .ant-input-password-focused,
+.input-container .ant-input-password .ant-input:focus {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 使用快速简单的动画 */
+.ant-modal-mask {
+  animation: fadeIn 0.15s ease !important;
+}
+
+.ant-modal-wrap {
+  animation: none !important;
+}
+
+.ant-modal {
+  animation: fadeIn 0.15s ease !important;
+  pointer-events: auto !important;
+}
+
+/* 确保 Modal 内容可交互 */
+.ant-modal-content {
+  pointer-events: auto !important;
+}
+
+.ant-modal-body {
+  pointer-events: auto !important;
+}
+
+.ant-modal .ant-btn,
+.ant-modal input,
+.ant-modal textarea,
+.ant-modal select,
+.ant-modal button,
+.ant-modal a {
+  pointer-events: auto !important;
+}

@@ -1,0 +1,71 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: second-hand-trading-platform
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/campus_trading?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    initialization-mode: always
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+    continue-on-error: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.campus.trading.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# JWT配置
+jwt:
+  secret: campus-second-hand-trading-platform-secret-key-2024
+  expiration: 86400000 # 24小时，单位：毫秒
+
+# 文件上传配置
+file:
+  upload:
+    path: uploads  # 相对路径，相对于项目根目录
+    max-size: 10485760 # 10MB
+
+# 支付宝配置
+alipay:
+  gateway: https://openapi-sandbox.dl.alipaydev.com/gateway.do  # 沙箱环境网关（新地址，2024年推荐）
+  # gateway: https://openapi.alipaydev.com/gateway.do  # 沙箱环境网关（旧地址，仍可用但可能不稳定）
+  # gateway: https://openapi.alipay.com/gateway.do  # 生产环境网关
+  appId: 9021000159633464
+  privateKey: |
+    -----BEGIN PRIVATE KEY-----
+    MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDIMAZIczDjhrI34vZr+ESWOoEBDCjA7Y3SD4Bm1mWsTL9YYRMbtrmeERufrz1a0UsEJ4gyrlGNDLmWoJzi0cn/BJFbWhGba+Qfki8pXpDJNGdkeOp1JSU7MSInkK14i0tGslHpG1eNqV+0sVrcFMWOW0ig2KvPLkdx+H9Dbr3fUWYHe1PKLeVVWzIxZ/vnygmf8pH+zjDECAKtbAwkhHWlATPU6XWlRhb9INW8MIZp8bwX9P3oydfpBMFtVUpOVMsqiVN41mAiNWJNeCJWctRzkL1vuvdw52ypgpf+DFn0bl9AzHQVnF+q9uQoxh8DEMSqQX50Nr464fclkvgMAlzBAgMBAAECggEAOYejppqECD8jZHAzRSAaBdpWTIjEBX2/bgjKa8NdgMCllK6BIUvH2CcuexuPVFQlbNI3j+kMwq5Pf3w02fJUTJdxdoFR4gqFipUmPItSrKAEvpkJOBUut+4M1LX9RFEzluOUKpuS88EjIfh+FhVaGOke3CqoZWf1XEl/uU9P/acSibft/2mG2olioenZodoGcI8+x6kib/+4ZSSLxf0ZaOsRDX9YKy/+0Vu9Qe/J8H37CqHT4PckLjmfFJI/aGEYhvXibyhtaRTEyNYDXT7wanOKcIeTXlL56SCRVqRejcTK6wSBh75yQHk7ivKpdSSwmAttdjPxAaNDVjZSnX4xSQKBgQDvngKY3gXFEKlfk4/SQ3v7KWUniXV6fk21INb+NpQCtsV/ZXXVTS/tLuEByf6Xs+jXYz0EPVwzbjNd9/mjXf2QD2j58PWOP7RUk8zVE/AyO+PuuIoqVEEBnDSbXzjBzF8fB3dnS8F9XyW5jtVqPBkF3xAQLiOEa2oe8gylOAcFfwKBgQDV3+Hwg0iwnoKdJ0jZpAmnxyH2h52tv4OMFv6usYy+NI3Uq0DEmfsBau92BtdhniPr5s7+cYK47nAab+4f4DaYwdGFlVKwiR4oJ4Msl/m1QVOFLfYOW2NZkhiky/wOb556icC/vj9VB/GEJVduq4lE/tgUrWm2L9yv66AVZIo9vwKBgQDHQ3udbGUX8DcpyCi+Dmi4AUChlGohp48vpVOkq/aCG0Q6IUHQVBQbBfUP687QkUh8dYZ0VCKskmQdLO5osO0ANBB0abGKzedEvnSEbcQ9whhWmRgtA0vb7u7Alns4jqA7yZW+TP1nKQzSNrm7Uqbsfwd4rSXUJQ9nFJr3epQ8OQKBgESaggECO6jbz43VchrN8YLt70kDC2MWUX34Sk2DCmBgvzX+kNH/inJT+OflHeVkMqWS7cbUZlgns7HnQXzcEOdDFJBC67lQ4mmC8yK0xRaNE9teeNT2H5I1uM3z2LBQwYcQ9NEMl4gQ+jmnOLp5L5kAHhPT5FraU3HipQD3tRhFAoGAONEHKfTTNOQL4AWMexbpHmekhiSHwvdCfJUpSWJMlc0wH1Dakv93ul+Xt+sdv07q/Z+39lYn0QZv+IBEgG6/WJfI5nEwOl2Cgbz173YisoebxpoERdQuJ7RX4UqIh923ZHINmLNyZGdm+Fluxz2oaLXguCYcknjZVq4bwUyHT9s=
+    -----END PRIVATE KEY-----
+  publicKey: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi7TmLhKfvG07/0xXKMZge1ahERCmeUBNmnPzRJuQ15caOHp+atUSyCBXbsQ7M6pS2/xOE9h11XJu1p/8q7tUYUp8oMx5VkwGPNB+iZ3CYbzfq7XAv9SzJhcXqtq5ho7ty+/MkbTAd04K8MrVieEw0BjPT5Z7zPCsKDMhSGrTRKyvHGMK0lO5qehtTElj9BEMx4nIaXLCCKA/1h/TYHE+mKej5d/m2L8SEiftnCaFq/BwvF5d+XdgfnbAJgjRrFsDyPkREH7D1XGgGPJgKlpX0sXiGo8DTQIb/441NL+LkwyqICTFFC0pWxvcReiR7mpNGA93bUKExsdBVeTPCX4BUQIDAQAB
+    -----END PUBLIC KEY-----
+  signType: RSA2
+  charset: UTF-8
+  format: JSON
+  notifyUrl: https://gibbed-jona-thrice.ngrok-free.dev/api/payments/alipay/notify  # 异步通知地址（ngrok公网地址）
+  returnUrl: http://localhost:8080/api/payments/alipay/return  # 同步跳转地址（本地测试使用localhost，如果支付宝不接受，需要使用ngrok等公网地址）
+
+# AI客服配置 - DeepSeek
+ai:
+  api:
+    url: ${AI_API_URL:https://api.deepseek.com}  # DeepSeek API地址
+    key: ${AI_API_KEY:}  # DeepSeek API密钥（在 https://platform.deepseek.com 获取）
+    type: ${AI_API_TYPE:deepseek}  # AI API类型：deepseek, openai, qwen, custom
+    model: ${AI_API_MODEL:deepseek-chat}  # 模型名称：deepseek-chat（便宜）或 deepseek-reasoner（推理能力强）

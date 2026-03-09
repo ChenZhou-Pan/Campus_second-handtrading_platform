@@ -1,0 +1,41 @@
+.product-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(187, 222, 251, 0.5);
+  box-shadow: 0 4px 16px 0 rgba(144, 202, 249, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 移除图片边框 */
+.product-card .ant-image,
+.product-card .ant-image img,
+.product-card img {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px 0 rgba(144, 202, 249, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(187, 222, 251, 0.7);
+}
+
+.product-card:active {
+  transform: translateY(-2px) scale(1.01);
+  transition: all 0.1s ease;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  text-overflow: ellipsis;
+}

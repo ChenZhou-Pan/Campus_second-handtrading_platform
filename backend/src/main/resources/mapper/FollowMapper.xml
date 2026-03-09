@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.FollowMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.Follow">
+        <id column="id" property="id"/>
+        <result column="follower_id" property="followerId"/>
+        <result column="following_id" property="followingId"/>
+        <result column="created_at" property="createdAt"/>
+    </resultMap>
+
+    <select id="findByFollowerIdAndFollowingId" resultMap="BaseResultMap">
+        SELECT * FROM follows WHERE follower_id = #{followerId} AND following_id = #{followingId}
+    </select>
+
+    <select id="findByFollowerId" resultMap="BaseResultMap">
+        SELECT * FROM follows WHERE follower_id = #{followerId} ORDER BY created_at DESC LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="findByFollowingId" resultMap="BaseResultMap">
+        SELECT * FROM follows WHERE following_id = #{followingId} ORDER BY created_at DESC LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="countByFollowerId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM follows WHERE follower_id = #{followerId}
+    </select>
+
+    <select id="countByFollowingId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM follows WHERE following_id = #{followingId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO follows (id, follower_id, following_id, created_at)
+        VALUES (#{id}, #{followerId}, #{followingId}, #{createdAt})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM follows WHERE follower_id = #{followerId} AND following_id = #{followingId}
+    </delete>
+</mapper>

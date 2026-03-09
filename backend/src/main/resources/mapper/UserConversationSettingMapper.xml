@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.UserConversationSettingMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.UserConversationSetting">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="conversation_id" property="conversationId"/>
+        <result column="is_deleted" property="isDeleted"/>
+        <result column="deleted_at" property="deletedAt"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="findByUserIdAndConversationId" resultMap="BaseResultMap">
+        SELECT * FROM user_conversation_settings 
+        WHERE user_id = #{userId} AND conversation_id = #{conversationId}
+        LIMIT 1
+    </select>
+
+    <insert id="insert">
+        INSERT INTO user_conversation_settings (id, user_id, conversation_id, is_deleted, deleted_at, created_at, updated_at)
+        VALUES (#{id}, #{userId}, #{conversationId}, #{isDeleted}, #{deletedAt}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <update id="update">
+        UPDATE user_conversation_settings 
+        SET is_deleted = #{isDeleted}, deleted_at = #{deletedAt}, updated_at = NOW()
+        WHERE id = #{id}
+    </update>
+
+    <update id="markAsDeleted">
+        UPDATE user_conversation_settings 
+        SET is_deleted = TRUE, deleted_at = NOW(), updated_at = NOW()
+        WHERE user_id = #{userId} AND conversation_id = #{conversationId}
+    </update>
+
+    <update id="markAsNotDeleted">
+        UPDATE user_conversation_settings 
+        SET is_deleted = FALSE, deleted_at = NULL, updated_at = NOW()
+        WHERE user_id = #{userId} AND conversation_id = #{conversationId}
+    </update>
+</mapper>

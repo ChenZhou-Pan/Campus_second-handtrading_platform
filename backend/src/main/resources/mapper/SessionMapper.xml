@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.SessionMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.UserSession">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="token_hash" property="tokenHash"/>
+        <result column="is_active" property="isActive"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="last_active_at" property="lastActiveAt"/>
+    </resultMap>
+
+    <select id="findByTokenHash" resultMap="BaseResultMap">
+        SELECT * FROM user_sessions WHERE token_hash = #{tokenHash}
+    </select>
+
+    <select id="findActiveSessionByUserId" resultMap="BaseResultMap">
+        SELECT * FROM user_sessions 
+        WHERE user_id = #{userId} AND is_active = TRUE 
+        ORDER BY last_active_at DESC 
+        LIMIT 1
+    </select>
+
+    <insert id="insert">
+        INSERT INTO user_sessions (id, user_id, token_hash, is_active, created_at, last_active_at)
+        VALUES (#{id}, #{userId}, #{tokenHash}, #{isActive}, #{createdAt}, #{lastActiveAt})
+    </insert>
+
+    <update id="invalidateAllSessionsExcept">
+        UPDATE user_sessions 
+        SET is_active = FALSE 
+        WHERE user_id = #{userId} AND token_hash != #{tokenHash}
+    </update>
+
+    <update id="invalidateSession">
+        UPDATE user_sessions 
+        SET is_active = FALSE 
+        WHERE token_hash = #{tokenHash}
+    </update>
+
+    <update id="updateLastActiveAt">
+        UPDATE user_sessions 
+        SET last_active_at = NOW() 
+        WHERE token_hash = #{tokenHash}
+    </update>
+
+    <delete id="deleteExpiredSessions">
+        DELETE FROM user_sessions 
+        WHERE last_active_at &lt; #{expiredBefore}
+    </delete>
+</mapper>

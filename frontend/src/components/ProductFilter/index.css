@@ -1,0 +1,248 @@
+.product-filter-card {
+  margin-bottom: 16px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+/* 移除Card的边框和背景 */
+.product-filter-card .ant-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.product-filter-card .ant-card-body {
+  padding: 12px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+/* 移除Card的所有边框和阴影，包括伪元素 */
+.product-filter-card::before,
+.product-filter-card::after,
+.product-filter-card .ant-card::before,
+.product-filter-card .ant-card::after,
+.product-filter-card .ant-card-body::before,
+.product-filter-card .ant-card-body::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 移除Space组件的默认样式 */
+.product-filter-card .ant-space {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.product-filter-card .ant-space-item {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Cascader毛玻璃效果 - 与InputNumber保持一致 */
+.product-filter-card .ant-cascader-picker {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px 0 rgba(144, 202, 249, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-input {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-input::placeholder {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-cascader-selection-item {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-cascader-selection-placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-cascader-input {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-cascader-input::placeholder {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(187, 222, 251, 0.6) !important;
+  box-shadow: 0 4px 12px 0 rgba(144, 202, 249, 0.15) !important;
+}
+
+.product-filter-card .ant-cascader-picker-focused,
+.product-filter-card .ant-cascader-picker:focus {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(187, 222, 251, 0.7) !important;
+  box-shadow: 0 4px 12px 0 rgba(144, 202, 249, 0.2) !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-cascader-input {
+  background: transparent !important;
+  border: none !important;
+  color: #999 !important;
+}
+
+.product-filter-card .ant-cascader-picker-arrow {
+  color: #999 !important;
+}
+
+/* 确保Cascader占位符文字是灰色 */
+.product-filter-card .ant-cascader-picker .ant-cascader-selection-placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+.product-filter-card .ant-cascader-picker .ant-cascader-selection-item {
+  color: #999 !important;
+}
+
+/* 确保InputNumber输入框文字是灰色 */
+.product-filter-card .ant-input-number input {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-input-number .ant-input-number-input {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-input-number-input-wrap input {
+  color: #999 !important;
+}
+
+/* InputNumber毛玻璃效果 - 统一颜色 */
+.product-filter-card .ant-input-number {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px 0 rgba(144, 202, 249, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: #999 !important;
+}
+
+.product-filter-card .ant-input-number:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(187, 222, 251, 0.6) !important;
+  box-shadow: 0 4px 12px 0 rgba(144, 202, 249, 0.15) !important;
+}
+
+.product-filter-card .ant-input-number-focused,
+.product-filter-card .ant-input-number:focus {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(187, 222, 251, 0.7) !important;
+  box-shadow: 0 4px 12px 0 rgba(144, 202, 249, 0.2) !important;
+}
+
+.product-filter-card .ant-input-number-input {
+  background: transparent !important;
+  color: #999 !important;
+}
+
+.product-filter-card .ant-input-number-input::placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+.product-filter-card .ant-input-number-input::-webkit-input-placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+.product-filter-card .ant-input-number-input::-moz-placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+.product-filter-card .ant-input-number-input:-ms-input-placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+.product-filter-card .ant-input-number .ant-input-number-input-wrap input {
+  color: #999 !important;
+}
+
+.product-filter-card .ant-input-number .ant-input-number-input-wrap input::placeholder {
+  color: #999 !important;
+  opacity: 1 !important;
+}
+
+/* Button毛玻璃效果 */
+.product-filter-card .ant-btn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px 0 rgba(144, 202, 249, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: #666 !important;
+}
+
+.product-filter-card .ant-btn:hover {
+  background: rgba(227, 242, 253, 0.85) !important;
+  border-color: rgba(187, 222, 251, 0.6) !important;
+  box-shadow: 0 4px 12px 0 rgba(144, 202, 249, 0.2) !important;
+  color: #1a1a1a !important;
+  transform: translateY(-1px);
+}
+
+.product-filter-card .ant-btn:active {
+  transform: translateY(0);
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-label {
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .product-filter-card .ant-card-body {
+    padding: 12px;
+  }
+
+  .filter-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .filter-label {
+    font-size: 13px;
+  }
+}

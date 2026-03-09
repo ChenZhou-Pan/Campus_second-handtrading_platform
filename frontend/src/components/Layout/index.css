@@ -1,0 +1,154 @@
+.ant-layout-header {
+  padding: 0 !important;
+  height: 64px !important;
+  line-height: 64px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* 蓝白色风格搜索框 - 胶囊形状 */
+.goofish-search-bar {
+  transition: all 0.2s;
+}
+
+/* 输入框样式 */
+.goofish-search-input-field,
+.goofish-search-input-field-desktop {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.goofish-search-input-field .ant-input,
+.goofish-search-input-field-desktop .ant-input {
+  font-size: 14px !important;
+}
+
+.goofish-search-input-field-desktop .ant-input {
+  font-size: 15px !important;
+}
+
+/* 搜索按钮 - 胶囊状 */
+.goofish-search-button {
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.goofish-search-button:hover {
+  background-color: rgba(227, 242, 253, 0.9) !important;
+}
+
+.goofish-search-button:active {
+  background-color: rgba(227, 242, 253, 0.95) !important;
+}
+
+/* 保留原有的Search组件样式（如果其他地方使用） */
+.goofish-search .ant-input {
+  border-radius: 20px !important;
+  border-color: #ebebeb !important;
+  background-color: #f5f5f5 !important;
+  font-size: 13px !important;
+}
+
+.goofish-search .ant-input:hover {
+  border-color: #d9d9d9 !important;
+  background-color: #fff !important;
+}
+
+.goofish-search .ant-input:focus {
+  border-color: rgba(187, 222, 251, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 0 2px rgba(144, 202, 249, 0.2) !important;
+}
+
+/* 底部导航栏样式 */
+.ant-layout-footer {
+  padding: 0 !important;
+  height: 50px !important;
+}
+
+/* Logo艺术字样式 */
+.logo-text {
+  color: #666 !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-shadow: 
+    1px 1px 2px rgba(0, 0, 0, 0.05),
+    0 0 4px rgba(144, 202, 249, 0.15) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  transition: all 0.3s ease !important;
+  transform: perspective(1px) translateZ(0) !important;
+}
+
+.logo-text:hover {
+  color: #4a4a4a !important;
+  text-shadow: 
+    1px 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 6px rgba(144, 202, 249, 0.25) !important;
+  transform: scale(1.05) !important;
+}
+
+/* 用户菜单胶囊状按钮样式 */
+.ant-dropdown-menu-item.user-menu-item-capsule {
+  border-radius: 20px !important;
+  margin: 4px 8px !important;
+  padding: 8px 16px !important;
+  text-align: center !important;
+  background: #f5f5f5 !important;
+  border: none !important;
+  transition: all 0.2s !important;
+  height: auto !important;
+  line-height: 1.5 !important;
+}
+
+.ant-dropdown-menu-item.user-menu-item-capsule:hover {
+  background: rgba(227, 242, 253, 0.9) !important;
+  color: #1a1a1a !important;
+}
+
+.ant-dropdown-menu-item.user-menu-item-capsule.ant-dropdown-menu-item-active {
+  background: rgba(227, 242, 253, 0.9) !important;
+  color: #1a1a1a !important;
+}
+
+/* 下拉菜单容器样式 - macOS毛玻璃风格 */
+.ant-dropdown-menu {
+  padding: 8px !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2) !important;
+  min-width: 160px !important;
+}
+
+/* 下拉菜单分割线样式 */
+.ant-dropdown-menu-item-divider {
+  margin: 8px 0 !important;
+}
+
+/* 搜索历史下拉菜单样式 */
+.search-history-dropdown {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.5) !important;
+  box-shadow: 0 8px 32px 0 rgba(144, 202, 249, 0.2) !important;
+}
+
+.search-history-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-history-dropdown::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.search-history-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(187, 222, 251, 0.5);
+  border-radius: 3px;
+}
+
+.search-history-dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(187, 222, 251, 0.7);
+}

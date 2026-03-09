@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.OrderRatingMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.OrderRating">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="rater_id" property="raterId"/>
+        <result column="rated_id" property="ratedId"/>
+        <result column="rating" property="rating"/>
+        <result column="comment" property="comment"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT * FROM order_ratings WHERE id = #{id}
+    </select>
+
+    <select id="findByOrderIdAndRaterId" resultMap="BaseResultMap">
+        SELECT * FROM order_ratings WHERE order_id = #{orderId} AND rater_id = #{raterId}
+    </select>
+
+    <select id="findByRatedId" resultMap="BaseResultMap">
+        SELECT * FROM order_ratings WHERE rated_id = #{ratedId} ORDER BY created_at DESC
+    </select>
+
+    <select id="findByOrderId" resultMap="BaseResultMap">
+        SELECT * FROM order_ratings WHERE order_id = #{orderId}
+    </select>
+
+    <select id="getAverageRatingByUserId" resultType="java.lang.Double">
+        SELECT COALESCE(AVG(rating), 5.0) FROM order_ratings WHERE rated_id = #{userId}
+    </select>
+
+    <select id="countRatingsByUserId" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM order_ratings WHERE rated_id = #{userId}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO order_ratings (id, order_id, rater_id, rated_id, rating, comment, created_at, updated_at)
+        VALUES (#{id}, #{orderId}, #{raterId}, #{ratedId}, #{rating}, #{comment}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <update id="update">
+        UPDATE order_ratings
+        <set>
+            <if test="rating != null">rating = #{rating},</if>
+            <if test="comment != null">comment = #{comment},</if>
+            updated_at = #{updatedAt}
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>

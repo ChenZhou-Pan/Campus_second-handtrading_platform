@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.campus.trading.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.campus.trading.entity.User">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="avatar" property="avatar"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="role" property="role"/>
+        <result column="alipay_account" property="alipayAccount"/>
+        <result column="credit_score" property="creditScore"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+
+    <select id="findByUsername" resultMap="BaseResultMap">
+        SELECT * FROM users WHERE username = #{username}
+    </select>
+
+    <select id="findById" resultMap="BaseResultMap">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <select id="findByPhone" resultMap="BaseResultMap">
+        SELECT * FROM users WHERE phone = #{phone}
+    </select>
+
+    <insert id="insert">
+        INSERT INTO users (id, username, password, avatar, phone, email, role, alipay_account, credit_score, created_at, updated_at)
+        VALUES (#{id}, #{username}, #{password}, #{avatar}, #{phone}, #{email}, #{role}, #{alipayAccount}, #{creditScore}, #{createdAt}, #{updatedAt})
+    </insert>
+
+    <update id="update">
+        UPDATE users
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="avatar != null">avatar = #{avatar},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="role != null">role = #{role},</if>
+            <if test="alipayAccount != null">alipay_account = #{alipayAccount},</if>
+            <if test="creditScore != null">credit_score = #{creditScore},</if>
+            <if test="updatedAt != null">updated_at = #{updatedAt},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateRole">
+        UPDATE users SET role = #{role}, updated_at = NOW() WHERE id = #{id}
+    </update>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        SELECT * FROM users ORDER BY created_at DESC
+    </select>
+
+    <delete id="delete">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <update id="updateCreditScore">
+        UPDATE users SET credit_score = #{creditScore}, updated_at = NOW() WHERE id = #{id}
+    </update>
+</mapper>

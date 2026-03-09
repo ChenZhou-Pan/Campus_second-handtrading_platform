@@ -1,0 +1,153 @@
+.profile-page {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.profile-header {
+  position: relative;
+}
+
+/* Tabs 样式调整 */
+.profile-page .ant-tabs {
+  background: transparent;
+}
+
+.profile-page .ant-tabs-nav {
+  display: none !important;
+}
+
+.profile-page .ant-tabs-content-holder {
+  background: transparent;
+}
+
+.profile-page .ant-tabs-tab {
+  padding: 16px 20px;
+  font-size: 15px;
+}
+
+.profile-page .ant-tabs-tab-active {
+  font-weight: 600;
+}
+
+.profile-page .ant-tabs-ink-bar {
+  height: 3px;
+}
+
+/* Card 样式 - 毛玻璃效果 */
+.profile-page .ant-card {
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.5) !important;
+  box-shadow: 0 8px 32px 0 rgba(144, 202, 249, 0.15) !important;
+}
+
+.profile-page .ant-card-body {
+  padding: 20px;
+  background: transparent !important;
+}
+
+/* Form 样式 */
+.profile-page .ant-form-item-label > label {
+  font-weight: 500;
+  color: #333;
+}
+
+.profile-page .ant-input {
+  border-radius: 4px;
+}
+
+/* Button 样式 */
+.profile-page .ant-btn {
+  border-radius: 4px;
+}
+
+/* 关注/粉丝弹窗毛玻璃样式 - 使用全局样式 */
+.follow-modal-glass .ant-modal-content {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.5) !important;
+  box-shadow: 0 8px 32px 0 rgba(144, 202, 249, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+.follow-modal-glass .ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(187, 222, 251, 0.3) !important;
+}
+
+.follow-modal-glass .ant-modal-title {
+  color: #1a1a1a !important;
+}
+
+.follow-modal-glass .ant-modal-close {
+  color: #666 !important;
+  pointer-events: auto !important;
+  z-index: 100 !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 56px !important;
+  height: 56px !important;
+  line-height: 56px !important;
+  text-align: center !important;
+}
+
+.follow-modal-glass .ant-modal-close:hover {
+  color: #1a1a1a !important;
+  background-color: rgba(227, 242, 253, 0.5) !important;
+  pointer-events: auto !important;
+}
+
+.follow-modal-glass .ant-modal-close:active {
+  pointer-events: auto !important;
+}
+
+.follow-modal-glass .ant-modal-body {
+  background: transparent !important;
+}
+
+/* 滚动条样式 */
+.follow-modal-glass .ant-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.follow-modal-glass .ant-modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.follow-modal-glass .ant-modal-body::-webkit-scrollbar-thumb {
+  background: rgba(187, 222, 251, 0.5);
+  border-radius: 3px;
+}
+
+.follow-modal-glass .ant-modal-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(187, 222, 251, 0.7);
+}
+
+/* 确保Profile页面所有Modal使用统一的毛玻璃样式 */
+.profile-page .ant-modal-content {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(187, 222, 251, 0.5) !important;
+  box-shadow: 0 8px 32px 0 rgba(144, 202, 249, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+.profile-page .ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(187, 222, 251, 0.3) !important;
+}
+
+.profile-page .ant-modal-title {
+  color: #1a1a1a !important;
+}
+
+.profile-page .ant-modal-body {
+  background: transparent !important;
+}

@@ -1,0 +1,334 @@
+.floating-sidebar {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(187, 222, 251, 0.5);
+  border-radius: 28px;
+  padding: 8px 6px;
+  box-shadow: 0 8px 32px 0 rgba(144, 202, 249, 0.2);
+  gap: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-sidebar:hover {
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 40px 0 rgba(144, 202, 249, 0.3);
+  transform: translateY(-50%) translateX(-4px);
+  border-color: rgba(187, 222, 251, 0.7);
+}
+
+.floating-divider {
+  width: 32px;
+  height: 1px;
+  background: rgba(187, 222, 251, 0.3);
+  margin: 2px 0;
+}
+
+.floating-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none !important;
+  border-radius: 12px;
+  font-size: 20px;
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: none !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+  box-shadow: none !important;
+  color: #4a5568 !important;
+}
+
+.floating-button .anticon {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  color: #4a5568 !important;
+}
+
+.floating-button:focus,
+.floating-button:focus-visible,
+.floating-button:active,
+.floating-button:focus-within {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-color: transparent !important;
+  background: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.floating-button:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: none !important;
+  background: rgba(227, 242, 253, 0.9) !important;
+  background-color: rgba(227, 242, 253, 0.9) !important;
+  border: none !important;
+  border-color: transparent !important;
+  color: #1a1a1a !important;
+  outline: none !important;
+}
+
+.floating-button:hover .anticon {
+  color: #1a1a1a !important;
+}
+
+.publish-button,
+.message-button,
+.feedback-button,
+.service-button {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #666 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.publish-button.ant-btn,
+.message-button.ant-btn,
+.feedback-button.ant-btn,
+.service-button.ant-btn {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.publish-button:hover,
+.message-button:hover,
+.feedback-button:hover,
+.service-button:hover {
+  background: rgba(227, 242, 253, 0.9) !important;
+  background-color: rgba(227, 242, 253, 0.9) !important;
+  color: #1a1a1a !important;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: none !important;
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+}
+
+.publish-button:hover .anticon,
+.message-button:hover .anticon,
+.feedback-button:hover .anticon,
+.service-button:hover .anticon {
+  color: #1a1a1a !important;
+}
+
+.publish-button:focus,
+.message-button:focus,
+.feedback-button:focus,
+.service-button:focus {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.publish-button:active,
+.message-button:active,
+.feedback-button:active,
+.service-button:active {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  background: rgba(227, 242, 253, 0.9) !important;
+  background-color: rgba(227, 242, 253, 0.9) !important;
+  transform: translateY(-1px) scale(1.05);
+}
+
+.publish-button:not(:active):not(:hover),
+.message-button:not(:active):not(:hover),
+.feedback-button:not(:active):not(:hover),
+.service-button:not(:active):not(:hover) {
+  background: transparent !important;
+  background-color: transparent !important;
+  transform: none;
+}
+
+.back-to-top-button {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #666 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  animation: fadeInUp 0.3s ease;
+}
+
+.back-to-top-button.ant-btn {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.back-to-top-button:hover,
+.back-to-top-button:focus,
+.back-to-top-button:active {
+  background: rgba(227, 242, 253, 0.9) !important;
+  background-color: rgba(227, 242, 253, 0.9) !important;
+  color: #1a1a1a !important;
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: none !important;
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+}
+
+.back-to-top-button:hover .anticon,
+.back-to-top-button:focus .anticon,
+.back-to-top-button:active .anticon {
+  color: #1a1a1a !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 移除Ant Design Button的默认样式 - 强制移除所有边框和outline */
+.floating-button.ant-btn,
+.floating-button.ant-btn:focus,
+.floating-button.ant-btn:focus-visible,
+.floating-button.ant-btn:active,
+.floating-button.ant-btn:hover,
+.floating-button.ant-btn-text,
+.floating-button.ant-btn-text:focus,
+.floating-button.ant-btn-text:focus-visible,
+.floating-button.ant-btn-text:active,
+.floating-button.ant-btn-text:hover {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-width: 0 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.floating-button.ant-btn::before,
+.floating-button.ant-btn::after,
+.floating-button.ant-btn-text::before,
+.floating-button.ant-btn-text::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 移除所有可能的focus ring */
+.floating-button.ant-btn:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 针对所有按钮类名 */
+.publish-button.ant-btn,
+.message-button.ant-btn,
+.feedback-button.ant-btn,
+.service-button.ant-btn,
+.back-to-top-button.ant-btn,
+.publish-button.ant-btn-text,
+.message-button.ant-btn-text,
+.feedback-button.ant-btn-text,
+.service-button.ant-btn-text,
+.back-to-top-button.ant-btn-text {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-width: 0 !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.publish-button.ant-btn:focus,
+.message-button.ant-btn:focus,
+.feedback-button.ant-btn:focus,
+.service-button.ant-btn:focus,
+.back-to-top-button.ant-btn:focus,
+.publish-button.ant-btn:focus-visible,
+.message-button.ant-btn:focus-visible,
+.feedback-button.ant-btn:focus-visible,
+.service-button.ant-btn:focus-visible,
+.back-to-top-button.ant-btn:focus-visible,
+.publish-button.ant-btn:active,
+.message-button.ant-btn:active,
+.feedback-button.ant-btn:active,
+.service-button.ant-btn:active,
+.back-to-top-button.ant-btn:active {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-width: 0 !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .floating-sidebar {
+    right: 10px;
+    padding: 6px 3px;
+    border-radius: 24px;
+  }
+
+  .floating-button {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  .floating-divider {
+    width: 28px;
+    margin: 3px 0;
+  }
+}
+
+/* 小屏幕隐藏部分按钮 */
+@media (max-width: 480px) {
+  .floating-sidebar {
+    right: 8px;
+    padding: 5px 2px;
+    border-radius: 20px;
+  }
+
+  .floating-button {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .floating-divider {
+    width: 24px;
+    margin: 2px 0;
+  }
+}
